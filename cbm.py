@@ -23,11 +23,11 @@ class ConceptLayer(nn.Module):
 
 class CBM(nn.Module):
     """ Encoder for CBM. """
-    def __init__(self, n_concepts, latent_dims, concept_names):
+    def __init__(self, n_concepts, latent_dims, concept_names, channels_in=3, n_out=1):
         super().__init__()
-        self.encoder = Encoder(latent_dims)
+        self.encoder = Encoder(latent_dims, channels_in)
         self.c_layer = ConceptLayer(latent_dims, concept_names)
-        self.predictor = Predictor(n_concepts, latent_dims)
+        self.predictor = Predictor(n_concepts, latent_dims, n_out)
 
     def forward(self, x):
         enc = self.encoder(x)

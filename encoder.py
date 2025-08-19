@@ -5,10 +5,10 @@ import torch.nn as nn
 
 class Encoder(nn.Module):
     """ Encoder for CBM. """
-    def __init__(self, latent_dims):
+    def __init__(self, latent_dims, channels_in=3):
         super().__init__()
         self.net = nn.Sequential(
-            nn.Conv2d(3, 4, (3, 3), padding='same'),
+            nn.Conv2d(channels_in, 4, (3, 3), padding='same'),
             nn.LeakyReLU(),
 
             nn.Conv2d(4, 4, (3, 3), padding='same'),
@@ -25,7 +25,7 @@ class Encoder(nn.Module):
             nn.MaxPool2d((5, 5)),
 
             nn.Flatten(start_dim=1, end_dim=-1),
-            nn.Linear(576, latent_dims),  
+            nn.LazyLinear(latent_dims),  
             nn.LeakyReLU(),
         )
 
