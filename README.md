@@ -12,4 +12,7 @@ Concept bottleneck models (CBMs) are deep learning models which are designed to 
 
 This repo contains example CBM(s) and associated evaluation metrics.  
 
+Tools used to assess concept alignment:
+- Saliency maps
+
 [See the original CBM paper here](https://proceedings.mlr.press/v119/koh20a.html)
